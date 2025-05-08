@@ -2,5 +2,5 @@
   "version": 3,
   "sources": [],
   "sections": [
-    {"offset": {"line": 1, "column": 0}, "map": {"version":3,"sources":["file:///C:/Users/plabr/PDL_APP/v2/frontend/src/app/globals.css"],"sourcesContent":["\n"],"names":[],"mappings":"","debugId":null}}]
+    {"offset": {"line": 1, "column": 0}, "map": {"version":3,"sources":["file:///C:/Users/plabr/PDL_APP/v2/frontend/src/app/globals.css"],"sourcesContent":["\n  \n"],"names":[],"mappings":"","debugId":null}}]
 }
