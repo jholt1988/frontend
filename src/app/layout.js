@@ -74,7 +74,7 @@ function Layout({ children }) {
           </button>
         </nav>
       </aside>
-      <div className="p-4 w-full justify-center bg-fuchsia-900 rounded-xl row-span-3">&nbsp;
+      <div className="flex p-4 w-full justify-items-center bg-fuchsia-900 rounded-xl row-span-3">&nbsp;
       <main className="flex-1 bg-gray-100 p-6 overflow-y-auto">{children}</main>
       <footer className="w-full bg-gray-900 text-white p-4 text-center">
         <p>&copy; 2023 PDL Rentals. All rights reserved.</p>
