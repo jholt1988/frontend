@@ -102,6 +102,7 @@ var _s = __turbopack_context__.k.signature();
 ;
 ;
 ;
+;
 function RootLayout({ children }) {
     return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("html", {
         lang: "en",
@@ -111,22 +112,22 @@ function RootLayout({ children }) {
                     children: children
                 }, void 0, false, {
                     fileName: "[project]/src/app/layout.js",
-                    lineNumber: 15,
+                    lineNumber: 16,
                     columnNumber: 11
                 }, this)
             }, void 0, false, {
                 fileName: "[project]/src/app/layout.js",
-                lineNumber: 14,
+                lineNumber: 15,
                 columnNumber: 9
             }, this)
         }, void 0, false, {
             fileName: "[project]/src/app/layout.js",
-            lineNumber: 13,
+            lineNumber: 14,
             columnNumber: 7
         }, this)
     }, void 0, false, {
         fileName: "[project]/src/app/layout.js",
-        lineNumber: 12,
+        lineNumber: 13,
         columnNumber: 5
     }, this);
 }
@@ -147,7 +148,7 @@ function Layout({ children }) {
                 children: "PDL Rentals"
             }, void 0, false, {
                 fileName: "[project]/src/app/layout.js",
-                lineNumber: 35,
+                lineNumber: 36,
                 columnNumber: 5
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -158,7 +159,7 @@ function Layout({ children }) {
                 ]
             }, void 0, true, {
                 fileName: "[project]/src/app/layout.js",
-                lineNumber: 36,
+                lineNumber: 37,
                 columnNumber: 9
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -169,7 +170,7 @@ function Layout({ children }) {
                 ]
             }, void 0, true, {
                 fileName: "[project]/src/app/layout.js",
-                lineNumber: 37,
+                lineNumber: 38,
                 columnNumber: 9
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -188,7 +189,7 @@ function Layout({ children }) {
                                         children: "Dashboard"
                                     }, void 0, false, {
                                         fileName: "[project]/src/app/layout.js",
-                                        lineNumber: 44,
+                                        lineNumber: 45,
                                         columnNumber: 15
                                     }, this)
                                 }, void 0, false),
@@ -200,16 +201,16 @@ function Layout({ children }) {
                                             children: "My Profile"
                                         }, void 0, false, {
                                             fileName: "[project]/src/app/layout.js",
-                                            lineNumber: 49,
+                                            lineNumber: 50,
                                             columnNumber: 15
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$client$2f$app$2d$dir$2f$link$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"], {
-                                            href: "/maintenance-request",
+                                            href: "/maintenance/request",
                                             className: "block hover:text-blue-400",
                                             children: "Submit Maintenance"
                                         }, void 0, false, {
                                             fileName: "[project]/src/app/layout.js",
-                                            lineNumber: 50,
+                                            lineNumber: 51,
                                             columnNumber: 15
                                         }, this)
                                     ]
@@ -225,7 +226,7 @@ function Layout({ children }) {
                                             children: "View Maintenance"
                                         }, void 0, false, {
                                             fileName: "[project]/src/app/layout.js",
-                                            lineNumber: 55,
+                                            lineNumber: 56,
                                             columnNumber: 15
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$client$2f$app$2d$dir$2f$link$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"], {
@@ -234,7 +235,7 @@ function Layout({ children }) {
                                             children: "Payments"
                                         }, void 0, false, {
                                             fileName: "[project]/src/app/layout.js",
-                                            lineNumber: 56,
+                                            lineNumber: 57,
                                             columnNumber: 15
                                         }, this)
                                     ]
@@ -245,7 +246,7 @@ function Layout({ children }) {
                                     children: "My Payments"
                                 }, void 0, false, {
                                     fileName: "[project]/src/app/layout.js",
-                                    lineNumber: 60,
+                                    lineNumber: 61,
                                     columnNumber: 13
                                 }, this),
                                 [
@@ -257,7 +258,7 @@ function Layout({ children }) {
                                     children: "Dashboard"
                                 }, void 0, false, {
                                     fileName: "[project]/src/app/layout.js",
-                                    lineNumber: 65,
+                                    lineNumber: 66,
                                     columnNumber: 13
                                 }, this),
                                 [
@@ -269,27 +270,27 @@ function Layout({ children }) {
                                     children: "Tenant Directory"
                                 }, void 0, false, {
                                     fileName: "[project]/src/app/layout.js",
-                                    lineNumber: 70,
+                                    lineNumber: 71,
                                     columnNumber: 13
                                 }, this),
-                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
+                                user && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
                                     onClick: handleLogout,
                                     className: "mt-4 text-red-400 hover:text-red-300",
                                     children: "Logout"
                                 }, void 0, false, {
                                     fileName: "[project]/src/app/layout.js",
-                                    lineNumber: 72,
+                                    lineNumber: 74,
                                     columnNumber: 11
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/src/app/layout.js",
-                            lineNumber: 41,
+                            lineNumber: 42,
                             columnNumber: 9
                         }, this)
                     }, void 0, false, {
                         fileName: "[project]/src/app/layout.js",
-                        lineNumber: 40,
+                        lineNumber: 41,
                         columnNumber: 7
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -304,7 +305,7 @@ function Layout({ children }) {
                                 children: children
                             }, void 0, false, {
                                 fileName: "[project]/src/app/layout.js",
-                                lineNumber: 78,
+                                lineNumber: 80,
                                 columnNumber: 7
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("footer", {
@@ -313,30 +314,30 @@ function Layout({ children }) {
                                     children: "© 2023 PDL Rentals. All rights reserved."
                                 }, void 0, false, {
                                     fileName: "[project]/src/app/layout.js",
-                                    lineNumber: 80,
+                                    lineNumber: 82,
                                     columnNumber: 9
                                 }, this)
                             }, void 0, false, {
                                 fileName: "[project]/src/app/layout.js",
-                                lineNumber: 79,
+                                lineNumber: 81,
                                 columnNumber: 7
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/src/app/layout.js",
-                        lineNumber: 77,
+                        lineNumber: 79,
                         columnNumber: 7
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/src/app/layout.js",
-                lineNumber: 39,
+                lineNumber: 40,
                 columnNumber: 5
             }, this)
         ]
     }, void 0, true, {
         fileName: "[project]/src/app/layout.js",
-        lineNumber: 32,
+        lineNumber: 33,
         columnNumber: 5
     }, this);
 }

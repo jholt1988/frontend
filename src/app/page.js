@@ -25,8 +25,8 @@ export default function LandingPage() {
         <p className="text-gray-600">Your centralized platform for managing properties, tenants, and payments.</p>
 
         <div className="flex justify-center gap-4">
-          <Link href="/login" className="btn btn-primary">Login</Link>
-          <Link href="/register" className="btn btn-secondary">Register</Link>
+         <div> <Link href="/login" className="btn btn-primary">Login</Link></div>
+          <div><Link href="/register" className="btn btn-secondary">Register</Link></div>
         </div>
 
         <p className="text-xs text-gray-400">Staff/Admin? Login to manage tenants and requests.</p>

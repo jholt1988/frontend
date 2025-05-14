@@ -9,3 +9,5 @@ const MaintenanceRequestPage = () => {
     </div>
   );
 }
+
+export default MaintenanceRequestPage;

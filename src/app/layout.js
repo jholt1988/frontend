@@ -2,6 +2,7 @@
 'use client';
 
 import './globals.css';
+import '@/styles/theme.css';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { useContext } from 'react';
@@ -47,7 +48,7 @@ function Layout({ children }) {
           {user?.role === 'tenant' && (
             <>
               <Link href="/tenant-profile" className="block hover:text-blue-400">My Profile</Link>
-              <Link href="/maintenance-request" className="block hover:text-blue-400">Submit Maintenance</Link>
+              <Link href="/maintenance/request" className="block hover:text-blue-400">Submit Maintenance</Link>
             </>
           )}
           {['staff', 'admin'].includes(user?.role) && (
@@ -69,9 +70,10 @@ function Layout({ children }) {
           {['staff', 'admin'].includes(user?.role) && (
             <Link href="/tenants" className="block hover:text-blue-400">Tenant Directory</Link>
           )}
+          { user && (
           <button onClick={handleLogout} className="mt-4 text-red-400 hover:text-red-300">
             Logout
-          </button>
+          </button>)}
         </nav>
       </aside>
       <div className="flex p-4 w-full  bg-fuchsia-900 rounded-xl row-span-3" style={{"justifyItems":'center'}}>&nbsp;

@@ -1,7 +1,7 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-@tailwind typography;
+
+@import "tailwindcss";
+
+
 :root {
   --background:rgb(10, 9, 9);
   --foreground:rgb(231, 212, 212);
@@ -29,7 +29,7 @@ body {
   @apply font-sans bg-background text-foreground;
 }
 h1, h2 {
-  @apply font-display;
+  @apply font-display text-foreground;
 }
 
 

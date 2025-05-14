@@ -9,3 +9,4 @@ const CreatePaymentPage = () => {
         </div>
     );
     }
+export default CreatePaymentPage;

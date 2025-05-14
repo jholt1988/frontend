@@ -16,6 +16,10 @@ export const getMaintenanceRequests = async () => {
   return res.data;
 };
 
+export const updateMaintenanceStatus = async (id, status) => {
+  const res = await api.put(`/maintenance/${id}`, { status });
+  return res.data;
+}
 export const getTenantProfile = async (userId) => {
   const res = await api.get(`/tenant-profile/${userId}`);
   return res.data;
@@ -36,6 +40,10 @@ export const createPayment = async (data) => {
     return res.data;
   };
   
+  export const getAllPayments = async () => {
+    const res = await api.get('/payments');
+    return res.data;
+  };
   export const searchUsers = async (query) => {
     const res = await api.get(`/users?search=${encodeURIComponent(query)}`);
     return res.data; // assumes it returns [{ id, name, email }]

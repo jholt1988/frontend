@@ -94,7 +94,8 @@ function RegisterPage() {
         address: '',
         leaseStart: '',
         leaseEnd: '',
-        rentAmount: ''
+        rentAmount: '',
+        role: ''
     });
     const [error, setError] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])('');
     const [loading, setLoading] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])(false);
@@ -129,7 +130,7 @@ function RegisterPage() {
                     children: "Register"
                 }, void 0, false, {
                     fileName: "[project]/src/app/register/page.jsx",
-                    lineNumber: 45,
+                    lineNumber: 46,
                     columnNumber: 9
                 }, this),
                 error && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -137,7 +138,7 @@ function RegisterPage() {
                     children: error
                 }, void 0, false, {
                     fileName: "[project]/src/app/register/page.jsx",
-                    lineNumber: 47,
+                    lineNumber: 48,
                     columnNumber: 19
                 }, this),
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
@@ -148,7 +149,7 @@ function RegisterPage() {
                     className: "input"
                 }, void 0, false, {
                     fileName: "[project]/src/app/register/page.jsx",
-                    lineNumber: 49,
+                    lineNumber: 50,
                     columnNumber: 9
                 }, this),
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
@@ -160,7 +161,7 @@ function RegisterPage() {
                     className: "input"
                 }, void 0, false, {
                     fileName: "[project]/src/app/register/page.jsx",
-                    lineNumber: 50,
+                    lineNumber: 51,
                     columnNumber: 9
                 }, this),
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
@@ -172,7 +173,7 @@ function RegisterPage() {
                     className: "input"
                 }, void 0, false, {
                     fileName: "[project]/src/app/register/page.jsx",
-                    lineNumber: 51,
+                    lineNumber: 52,
                     columnNumber: 9
                 }, this),
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
@@ -182,7 +183,7 @@ function RegisterPage() {
                     className: "input"
                 }, void 0, false, {
                     fileName: "[project]/src/app/register/page.jsx",
-                    lineNumber: 53,
+                    lineNumber: 54,
                     columnNumber: 9
                 }, this),
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
@@ -192,7 +193,7 @@ function RegisterPage() {
                     className: "input"
                 }, void 0, false, {
                     fileName: "[project]/src/app/register/page.jsx",
-                    lineNumber: 54,
+                    lineNumber: 55,
                     columnNumber: 9
                 }, this),
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
@@ -203,7 +204,7 @@ function RegisterPage() {
                     className: "input"
                 }, void 0, false, {
                     fileName: "[project]/src/app/register/page.jsx",
-                    lineNumber: 55,
+                    lineNumber: 56,
                     columnNumber: 9
                 }, this),
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
@@ -214,7 +215,7 @@ function RegisterPage() {
                     className: "input"
                 }, void 0, false, {
                     fileName: "[project]/src/app/register/page.jsx",
-                    lineNumber: 56,
+                    lineNumber: 57,
                     columnNumber: 9
                 }, this),
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
@@ -226,7 +227,42 @@ function RegisterPage() {
                     className: "input"
                 }, void 0, false, {
                     fileName: "[project]/src/app/register/page.jsx",
-                    lineNumber: 57,
+                    lineNumber: 58,
+                    columnNumber: 9
+                }, this),
+                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("select", {
+                    name: "role",
+                    onChange: handleChange,
+                    className: "input",
+                    children: [
+                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("option", {
+                            value: "tenant",
+                            children: "Tenant"
+                        }, void 0, false, {
+                            fileName: "[project]/src/app/register/page.jsx",
+                            lineNumber: 60,
+                            columnNumber: 11
+                        }, this),
+                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("option", {
+                            value: "landlord",
+                            children: "Landlord"
+                        }, void 0, false, {
+                            fileName: "[project]/src/app/register/page.jsx",
+                            lineNumber: 61,
+                            columnNumber: 11
+                        }, this),
+                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("option", {
+                            value: "admin",
+                            children: "Admin"
+                        }, void 0, false, {
+                            fileName: "[project]/src/app/register/page.jsx",
+                            lineNumber: 62,
+                            columnNumber: 11
+                        }, this)
+                    ]
+                }, void 0, true, {
+                    fileName: "[project]/src/app/register/page.jsx",
+                    lineNumber: 59,
                     columnNumber: 9
                 }, this),
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -236,7 +272,7 @@ function RegisterPage() {
                     children: loading ? 'Registering...' : 'Register'
                 }, void 0, false, {
                     fileName: "[project]/src/app/register/page.jsx",
-                    lineNumber: 59,
+                    lineNumber: 65,
                     columnNumber: 9
                 }, this),
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -249,28 +285,28 @@ function RegisterPage() {
                             children: "Login"
                         }, void 0, false, {
                             fileName: "[project]/src/app/register/page.jsx",
-                            lineNumber: 64,
+                            lineNumber: 70,
                             columnNumber: 36
                         }, this)
                     ]
                 }, void 0, true, {
                     fileName: "[project]/src/app/register/page.jsx",
-                    lineNumber: 63,
+                    lineNumber: 69,
                     columnNumber: 9
                 }, this)
             ]
         }, void 0, true, {
             fileName: "[project]/src/app/register/page.jsx",
-            lineNumber: 44,
+            lineNumber: 45,
             columnNumber: 7
         }, this)
     }, void 0, false, {
         fileName: "[project]/src/app/register/page.jsx",
-        lineNumber: 43,
+        lineNumber: 44,
         columnNumber: 5
     }, this);
 }
-_s(RegisterPage, "zizwtTntOh8gW7RrYqJizYXYd0M=");
+_s(RegisterPage, "lYaBwEpxs9SmjUWx5qsPm/CcrYE=");
 _c = RegisterPage;
 var _c;
 __turbopack_context__.k.register(_c, "RegisterPage");

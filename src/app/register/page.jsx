@@ -15,6 +15,7 @@ export default function RegisterPage() {
     leaseStart: '',
     leaseEnd: '',
     rentAmount: '',
+    role: '', // default role
   });
 
   const [error, setError] = useState('');
@@ -55,6 +56,11 @@ export default function RegisterPage() {
         <input name="leaseStart" type="date" placeholder="Lease Start" onChange={handleChange} className="input" />
         <input name="leaseEnd" type="date" placeholder="Lease End" onChange={handleChange} className="input" />
         <input name="rentAmount" type="number" step="0.01" placeholder="Rent Amount" onChange={handleChange} className="input" />
+        <select name="role" onChange={handleChange} className="input">
+          <option value="tenant">Tenant</option>
+          <option value="landlord">Landlord</option>
+          <option value="admin">Admin</option>
+        </select>
 
         <button type="submit" className="btn btn-primary w-full" disabled={loading}>
           {loading ? 'Registering...' : 'Register'}

@@ -1,0 +1,6 @@
+{
+  "version": 3,
+  "sources": [],
+  "sections": [
+    {"offset": {"line": 1, "column": 0}, "map": {"version":3,"sources":["turbopack:///[project]/src/app/styles/theme.css"],"sourcesContent":["/* src/styles/theme.css */\r\n\r\n\r\n@layer base {\r\n    body {\r\n      @apply font-sans bg-background text-gray-800;\r\n    }\r\n  \r\n    h1, h2 {\r\n      @apply font-display;\r\n    }\r\n  }\r\n  \r\n  @layer components {\r\n    .btn {\r\n      @apply px-4 py-2 rounded font-semibold text-white;\r\n    }\r\n  \r\n    .btn-primary {\r\n      @apply bg-primary hover:bg-brand-light;\r\n    }\r\n  \r\n    .btn-secondary {\r\n      @apply bg-secondary hover:bg-gray-700;\r\n    }\r\n  \r\n    .input {\r\n      @apply w-full px-4 py-2 border rounded;\r\n    }\r\n  \r\n    .card {\r\n      @apply bg-surface p-6 rounded shadow;\r\n    }\r\n  \r\n    .badge {\r\n      @apply px-2 py-1 text-xs font-medium rounded;\r\n    }\r\n  \r\n    .badge-success {\r\n      @apply bg-green-100 text-green-800;\r\n    }\r\n  \r\n    .badge-danger {\r\n      @apply bg-red-100 text-red-800;\r\n    }\r\n  \r\n    .badge-warning {\r\n      @apply bg-yellow-100 text-yellow-800;\r\n    }\r\n  }\r\n  "],"names":[],"mappings":"AAGA;EAEM;;EAIA;;;AAIJ;EAEI;;EAIA;;EAIA;;EAIA;;EAIA;;EAIA;;EAIA;;EAIA;;EAIA"}}]
+}

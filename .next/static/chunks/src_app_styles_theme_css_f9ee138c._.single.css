@@ -1,0 +1,28 @@
+/* [project]/src/app/styles/theme.css [app-client] (css) */
+@layer base {
+  @apply font-sans bg-background text-gray-800;
+
+  @apply font-display;
+}
+
+@layer components {
+  @apply px-4 py-2 rounded font-semibold text-white;
+
+  @apply bg-primary hover:bg-brand-light;
+
+  @apply bg-secondary hover:bg-gray-700;
+
+  @apply w-full px-4 py-2 border rounded;
+
+  @apply bg-surface p-6 rounded shadow;
+
+  @apply px-2 py-1 text-xs font-medium rounded;
+
+  @apply bg-green-100 text-green-800;
+
+  @apply bg-red-100 text-red-800;
+
+  @apply bg-yellow-100 text-yellow-800;
+}
+
+/*# sourceMappingURL=src_app_styles_theme_css_f9ee138c._.single.css.map*/

@@ -9,3 +9,5 @@ const PaymentsListPage = () => {
         </div>
     );
     }   
+
+    export default PaymentsListPage;

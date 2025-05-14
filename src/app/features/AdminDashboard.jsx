@@ -1,9 +1,9 @@
 'use client';
 
 import { useEffect, useState, useContext, useRef} from 'react';
-import { AuthContext } from '.@/context/AuthContext';
+import  AuthContext  from '@/context/AuthContext';
 import { getDashboardSummary } from '@/services/apiService';
-import { getDashboardStats } from '../services/apiService';
+import { getDashboardStats } from '@/services/apiService';
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, BarChart, Bar } from 'recharts';
 import ExportControls from '@/components/ExportControls';
 

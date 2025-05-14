@@ -1,8 +1,8 @@
 'use client';
 
 import { useState, useContext } from 'react';
-import { AuthContext } from '../context/AuthContext';
-import { createMaintenanceRequest } from '../services/apiService';
+import  AuthContext  from '@/context/AuthContext';
+import { createMaintenanceRequest } from '@/services/apiService';
 import { useRouter } from 'next/navigation';
 
 export default function MaintenanceRequest() {

@@ -8,3 +8,5 @@ const PaymentHistoryPage = () => {
     </div>
   );
 }
+
+export default PaymentHistoryPage;

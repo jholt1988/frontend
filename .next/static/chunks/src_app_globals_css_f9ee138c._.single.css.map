@@ -1,0 +1,6 @@
+{
+  "version": 3,
+  "sources": [],
+  "sections": [
+    {"offset": {"line": 1, "column": 0}, "map": {"version":3,"sources":["turbopack:///[project]/src/app/globals.css"],"sourcesContent":["\n@import \"tailwindcss\";\n\n\n:root {\n  --background:rgb(10, 9, 9);\n  --foreground:rgb(231, 212, 212);\n}\n\n.text-foreground {\n  color: var(--foreground);\n}\n\n@theme inline {\n  --color-background: var(--background);\n  --color-foreground: var(--foreground);\n  --font-sans: var(--font-geist-sans);\n  --font-mono: var(--font-geist-mono);\n}\n\n@media (prefers-color-scheme: dark) {\n  :root {\n    --background: #0a0a0a;\n    --foreground: #ededed;\n  }\n}\n\nbody {\n  @apply font-sans bg-background text-foreground;\n}\nh1, h2 {\n  @apply font-display text-foreground;\n}\n\n\n\n.input {\n    @apply w-full px-4 py-2 border rounded;\n  }\n  .btn {\n    @apply px-4 py-2 rounded text-white;\n  }\n  .btn-primary {\n    @apply bg-blue-600 hover:bg-blue-700;\n  }\n  .btn-secondary {\n    @apply bg-gray-500 hover:bg-gray-600;\n  }\n  \n"],"names":[],"mappings":"AAIA;;;;;AAKA;;;;AAIA;;;;AAOA;EACE;;;;;;AAOA;;AAGA;;AAME;;AAGA;;AAGA;;AAGA"}}]
+}

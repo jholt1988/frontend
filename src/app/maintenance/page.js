@@ -8,3 +8,5 @@ const MaintenanceListPage = () => {
     </div>
   );
 }
+
+export default MaintenanceListPage;

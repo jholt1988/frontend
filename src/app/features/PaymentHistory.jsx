@@ -1,8 +1,8 @@
 'use client';
 
 import { useEffect, useState, useContext } from 'react';
-import { AuthContext } from '@/context/AuthContext';
-import { getMyPayments } from '@services/apiService';
+import  AuthContext from '@/context/AuthContext';
+import { getMyPayments } from '@/services/apiService';
 
 export default function PaymentHistory() {
   const { user } = useContext(AuthContext);
