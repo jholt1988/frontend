@@ -151,6 +151,7 @@ __turbopack_context__.s({
     "createMaintenanceRequest": (()=>createMaintenanceRequest),
     "createPayment": (()=>createPayment),
     "createTenantProfile": (()=>createTenantProfile),
+    "getAllPayments": (()=>getAllPayments),
     "getDashboardStats": (()=>getDashboardStats),
     "getDashboardSummary": (()=>getDashboardSummary),
     "getMaintenanceRequests": (()=>getMaintenanceRequests),
@@ -161,6 +162,7 @@ __turbopack_context__.s({
     "getTenantProfile": (()=>getTenantProfile),
     "getTenants": (()=>getTenants),
     "searchUsers": (()=>searchUsers),
+    "updateMaintenanceStatus": (()=>updateMaintenanceStatus),
     "updateTenantProfile": (()=>updateTenantProfile)
 });
 var __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$app$2f$services$2f$axiosInstance$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/src/app/services/axiosInstance.js [app-ssr] (ecmascript)");
@@ -177,6 +179,12 @@ const getMaintenanceRequests = async ()=>{
     const res = await __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$app$2f$services$2f$axiosInstance$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["default"].get('/maintenance');
     return res.data;
 };
+const updateMaintenanceStatus = async (id, status)=>{
+    const res = await __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$app$2f$services$2f$axiosInstance$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["default"].put(`/maintenance/${id}`, {
+        status
+    });
+    return res.data;
+};
 const getTenantProfile = async (userId)=>{
     const res = await __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$app$2f$services$2f$axiosInstance$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["default"].get(`/tenant-profile/${userId}`);
     return res.data;
@@ -191,6 +199,10 @@ const updateTenantProfile = async (userId, profile)=>{
 };
 const createPayment = async (data)=>{
     const res = await __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$app$2f$services$2f$axiosInstance$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["default"].post('/payments', data);
+    return res.data;
+};
+const getAllPayments = async ()=>{
+    const res = await __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$app$2f$services$2f$axiosInstance$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["default"].get('/payments');
     return res.data;
 };
 const searchUsers = async (query)=>{
@@ -342,10 +354,7 @@ function AdminDashboard() {
     }, [
         user
     ]);
-    if (!user || ![
-        'admin',
-        'staff'
-    ].includes(user.role)) {
+    if (!user || user.role !== 'admin' || user.role !== 'staff') {
         return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
             className: "text-red-500",
             children: "Unauthorized"

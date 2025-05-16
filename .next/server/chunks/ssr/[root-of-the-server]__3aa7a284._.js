@@ -151,6 +151,7 @@ __turbopack_context__.s({
     "createMaintenanceRequest": (()=>createMaintenanceRequest),
     "createPayment": (()=>createPayment),
     "createTenantProfile": (()=>createTenantProfile),
+    "getAllPayments": (()=>getAllPayments),
     "getDashboardStats": (()=>getDashboardStats),
     "getDashboardSummary": (()=>getDashboardSummary),
     "getMaintenanceRequests": (()=>getMaintenanceRequests),
@@ -161,6 +162,7 @@ __turbopack_context__.s({
     "getTenantProfile": (()=>getTenantProfile),
     "getTenants": (()=>getTenants),
     "searchUsers": (()=>searchUsers),
+    "updateMaintenanceStatus": (()=>updateMaintenanceStatus),
     "updateTenantProfile": (()=>updateTenantProfile)
 });
 var __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$app$2f$services$2f$axiosInstance$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/src/app/services/axiosInstance.js [app-ssr] (ecmascript)");
@@ -177,6 +179,12 @@ const getMaintenanceRequests = async ()=>{
     const res = await __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$app$2f$services$2f$axiosInstance$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["default"].get('/maintenance');
     return res.data;
 };
+const updateMaintenanceStatus = async (id, status)=>{
+    const res = await __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$app$2f$services$2f$axiosInstance$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["default"].put(`/maintenance/${id}`, {
+        status
+    });
+    return res.data;
+};
 const getTenantProfile = async (userId)=>{
     const res = await __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$app$2f$services$2f$axiosInstance$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["default"].get(`/tenant-profile/${userId}`);
     return res.data;
@@ -191,6 +199,10 @@ const updateTenantProfile = async (userId, profile)=>{
 };
 const createPayment = async (data)=>{
     const res = await __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$app$2f$services$2f$axiosInstance$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["default"].post('/payments', data);
+    return res.data;
+};
+const getAllPayments = async ()=>{
+    const res = await __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$app$2f$services$2f$axiosInstance$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["default"].get('/payments');
     return res.data;
 };
 const searchUsers = async (query)=>{

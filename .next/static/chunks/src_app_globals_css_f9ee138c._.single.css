@@ -1,34 +1,64 @@
 /* [project]/src/app/globals.css [app-client] (css) */
-:root {
-  --background: #0a0909;
-  --foreground: #e7d4d4;
+@layer base {
+  @apply font-sans bg-brand text-gray-100 m-0 p-0;
+
+  @apply transition-colors duration-300;
+
+  @apply transition-colors duration-300;
 }
 
-.text-foreground {
-  color: var(--foreground);
+@layer components {
+  @apply bg-brand text-white p-4 text-center text-2xl shadow-md;
+
+  @apply list-none flex gap-5 p-0 m-0;
+
+  @apply text-white no-underline text-base transition-colors duration-300;
+
+  @apply text-highlight;
+
+  @apply py-5;
+
+  @apply mb-10;
+
+  @apply bg-secondary p-5 rounded shadow-md mb-5 transition-transform duration-300 animate-fadeIn;
+
+  @apply -translate-y-1;
+
+  @apply mt-0;
+
+  @apply bg-brand text-white text-center py-3 fixed w-full bottom-0;
 }
 
-@theme inline {
-  --color-background: var(--background) ; --color-foreground: var(--foreground) ; --font-sans: var(--font-geist-sans) ; --font-mono: var(--font-geist-mono) ;
-}
+@layer utilities {
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .animate-fadeIn {
+    animation: .5s ease-out fadeIn;
+  }
+
+  @media (width <= 768px) {
+    @apply flex-col gap-2.5;
+
+    @apply p-4;
+  }
+
+  @media (width <= 480px) {
+    @apply text-xl;
+
+    @apply text-sm;
+
+    @apply p-2.5;
   }
 }
-
-@apply font-sans bg-background text-foreground;
-
-@apply font-display text-foreground;
-
-@apply w-full px-4 py-2 border rounded;
-
-@apply px-4 py-2 rounded text-white;
-
-@apply bg-blue-600 hover:bg-blue-700;
-
-@apply bg-gray-500 hover:bg-gray-600;
 
 /*# sourceMappingURL=src_app_globals_css_f9ee138c._.single.css.map*/

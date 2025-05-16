@@ -28,7 +28,7 @@ export default function AdminDashboard() {
     }
   }, [user]);
 
-  if (!user || !['admin', 'staff'].includes(user.role)) {
+  if (!user || (user.role !== 'admin' ||user.role !== 'staff')) {
     return <p className="text-red-500">Unauthorized</p>;
   }
 

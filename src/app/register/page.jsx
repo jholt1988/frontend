@@ -3,7 +3,8 @@
 import { useState, useContext } from 'react';
 import AuthContext from '@/context/AuthContext';
 import { registerUser } from '@/services/authService';
-
+import { toast } from 'react-toastify';
+import Link from 'next/link';
 export default function RegisterPage() {
   const { login } = useContext(AuthContext);
   const [formData, setFormData] = useState({
@@ -11,10 +12,6 @@ export default function RegisterPage() {
     email: '',
     password: '',
     phone: '',
-    address: '',
-    leaseStart: '',
-    leaseEnd: '',
-    rentAmount: '',
     role: '', // default role
   });
 
@@ -32,44 +29,48 @@ export default function RegisterPage() {
     setError('');
     try {
       const { token } = await registerUser(formData);
-      login(token); // auto-login after registration
-    } catch (err) {
-      setError(err.response?.data?.message || 'Registration failed');
-    } finally {
+      login(token);
+      toast.success("Registration successful!") // auto-login after registration
+    } catch (error) {
+      toast.error(error.message || "Registration failed");
+  }  finally {
       setLoading(false);
     }
   };
+  
+  
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-100 px-4">
-      <form onSubmit={handleSubmit} className="bg-white p-8 rounded shadow max-w-md w-full space-y-4">
-        <h1 className="text-2xl font-bold text-center">Register</h1>
-
-        {error && <p className="text-red-500 text-sm">{error}</p>}
-
-        <input name="name" placeholder="Full Name" required onChange={handleChange} className="input" />
-        <input name="email" type="email" placeholder="Email" required onChange={handleChange} className="input" />
-        <input name="password" type="password" placeholder="Password" required onChange={handleChange} className="input" />
-
-        <input name="phone" placeholder="Phone" onChange={handleChange} className="input" />
-        <input name="address" placeholder="Address" onChange={handleChange} className="input" />
-        <input name="leaseStart" type="date" placeholder="Lease Start" onChange={handleChange} className="input" />
-        <input name="leaseEnd" type="date" placeholder="Lease End" onChange={handleChange} className="input" />
-        <input name="rentAmount" type="number" step="0.01" placeholder="Rent Amount" onChange={handleChange} className="input" />
-        <select name="role" onChange={handleChange} className="input">
-          <option value="tenant">Tenant</option>
-          <option value="landlord">Landlord</option>
-          <option value="admin">Admin</option>
-        </select>
-
-        <button type="submit" className="btn btn-primary w-full" disabled={loading}>
-          {loading ? 'Registering...' : 'Register'}
-        </button>
-
-        <p className="text-center text-sm text-gray-500">
-          Already have an account? <a href="/login" className="text-blue-600 hover:underline">Login</a>
-        </p>
-      </form>
-    </div>
-  );
-}
+     <div style={{ textAlign: "center", padding: "50px" }}>
+                <h2>Register</h2>
+                <form onSubmit={handleSubmit}>
+                    <div>
+                        <label>Name:</label>
+                        <input type="text" name="name" value={formData.name} onChange={ handleChange } required />
+                    </div>
+                    <div>
+                        <label>Email:</label>
+                        <input type="email" name="email" value={formData.email} onChange={ handleChange } required />
+                    </div>
+                    <div>
+                        <label>Password:</label>
+                        <input type="password" name="password" value={formData.password} onChange={ handleChange } required />
+                    </div>
+                    <div>
+                        <label>Confirm Password:</label>
+                        <input type="password" name="confirmPassword" value={formData.confirmPassword} onChange={ handleChange } required />
+                    </div>
+                    <select name="role" value={formData.role} onChange={ handleChange } required>
+                        <option value="Tenant">Tenant</option>
+                        <option value="Admin">Admin</option>
+                        <option value="Contractor">Contractor</option>
+                    </select>
+    
+                    <button type="submit">Register</button>
+                </form>
+                <p>
+                    Already have an account? <Link href="/login">Login</Link>
+                </p>
+            </div>
+        );
+    };

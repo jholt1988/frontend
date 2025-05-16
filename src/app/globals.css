@@ -1,49 +1,99 @@
-
 @import "tailwindcss";
+@import "@/styles/theme.css";
 
+@layer base {
+  body {
+    @apply font-sans bg-brand text-gray-100 m-0 p-0;
+  }
+  html {
+    @apply transition-colors duration-300;
+  }
 
-:root {
-  --background:rgb(10, 9, 9);
-  --foreground:rgb(231, 212, 212);
-}
-
-.text-foreground {
-  color: var(--foreground);
-}
-
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+  body {
+    @apply transition-colors duration-300;
   }
 }
 
-body {
-  @apply font-sans bg-background text-foreground;
+
+@layer components {
+  .header {
+    @apply bg-brand text-white p-4 text-center text-2xl shadow-md;
+  }
+
+  .navbar ul {
+    @apply list-none flex gap-5 p-0 m-0;
+  }
+
+  .navbar ul li a {
+    @apply text-white no-underline text-base transition-colors duration-300;
+  }
+
+  .navbar ul li a:hover {
+    @apply text-highlight;
+  }
+
+  .main-content {
+    @apply py-5;
+  }
+
+  .properties, .tenants {
+    @apply mb-10;
+  }
+
+  .property-card, .tenant-card {
+    @apply bg-secondary p-5 rounded shadow-md mb-5 transition-transform duration-300 animate-fadeIn;
+  }
+
+  .property-card:hover, .tenant-card:hover {
+    @apply -translate-y-1;
+  }
+
+  .property-card h3, .tenant-card h3 {
+    @apply mt-0;
+  }
+
+  .footer {
+    @apply bg-brand text-white text-center py-3 fixed w-full bottom-0;
+  }
 }
-h1, h2 {
-  @apply font-display text-foreground;
+
+@layer utilities {
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .animate-fadeIn {
+    animation: fadeIn 0.5s ease-out;
+  }
+
+  @media (max-width: 768px) {
+    .navbar ul {
+      @apply flex-col gap-2.5;
+    }
+
+    .property-card, .tenant-card {
+      @apply p-4;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .logo {
+      @apply text-xl;
+    }
+
+    .navbar ul li a {
+      @apply text-sm;
+    }
+
+    .property-card, .tenant-card {
+      @apply p-2.5;
+    }
+  }
 }
-
-
-
-.input {
-    @apply w-full px-4 py-2 border rounded;
-  }
-  .btn {
-    @apply px-4 py-2 rounded text-white;
-  }
-  .btn-primary {
-    @apply bg-blue-600 hover:bg-blue-700;
-  }
-  .btn-secondary {
-    @apply bg-gray-500 hover:bg-gray-600;
-  }
-  

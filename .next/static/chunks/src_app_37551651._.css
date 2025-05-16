@@ -1,62 +1,110 @@
 /* [project]/src/app/globals.css [app-client] (css) */
-:root {
-  --background: #0a0909;
-  --foreground: #e7d4d4;
-}
-
-.text-foreground {
-  color: var(--foreground);
-}
-
-@theme inline {
-  --color-background: var(--background) ; --color-foreground: var(--foreground) ; --font-sans: var(--font-geist-sans) ; --font-mono: var(--font-geist-mono) ;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
-
-@apply font-sans bg-background text-foreground;
-
-@apply font-display text-foreground;
-
-@apply w-full px-4 py-2 border rounded;
-
-@apply px-4 py-2 rounded text-white;
-
-@apply bg-blue-600 hover:bg-blue-700;
-
-@apply bg-gray-500 hover:bg-gray-600;
-
-
-/* [project]/src/app/styles/theme.css [app-client] (css) */
 @layer base {
-  @apply font-sans bg-background text-gray-800;
-
-  @apply font-display;
+  @apply font-sans bg-brand text-gray-100 m-0 p-0;
 }
 
 @layer components {
-  @apply px-4 py-2 rounded font-semibold text-white;
+  @apply bg-brand text-white p-4 text-center text-2xl shadow-md;
 
-  @apply bg-primary hover:bg-brand-light;
+  @apply list-none flex gap-5 p-0 m-0;
 
-  @apply bg-secondary hover:bg-gray-700;
+  @apply text-white no-underline text-base transition-colors duration-300;
 
-  @apply w-full px-4 py-2 border rounded;
+  @apply text-highlight;
 
-  @apply bg-surface p-6 rounded shadow;
+  @apply py-5;
 
-  @apply px-2 py-1 text-xs font-medium rounded;
+  @apply mb-10;
 
-  @apply bg-green-100 text-green-800;
+  @apply bg-secondary p-5 rounded shadow-md mb-5 transition-transform duration-300 animate-fadeIn;
 
-  @apply bg-red-100 text-red-800;
+  @apply -translate-y-1;
 
-  @apply bg-yellow-100 text-yellow-800;
+  @apply mt-0;
+
+  @apply bg-brand text-white text-center py-3 fixed w-full bottom-0;
+}
+
+@layer utilities {
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .animate-fadeIn {
+    animation: .5s ease-out fadeIn;
+  }
+
+  @media (width <= 768px) {
+    @apply flex-col gap-2.5;
+
+    @apply p-4;
+  }
+
+  @media (width <= 480px) {
+    @apply text-xl;
+
+    @apply text-sm;
+
+    @apply p-2.5;
+  }
+}
+
+
+/* [project]/src/app/styles/theme.css [app-client] (css) */
+@config {
+  theme { fontFamily: { sans: ["Roboto", "sans-serif"], }, colors: { primary: "#121212", secondary: "#1E1E1E", accent: "#BB86FC", highlight: "#03DAC5", text: "#E0E0E0", border: "#444", }, borderRadius: { DEFAULT: "4px", }, transitionDuration: { fast: "300ms", }, }
+}
+
+@layer base {
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  @apply font-sans bg-primary text-text leading-relaxed;
+
+  @apply font-semibold mb-2 text-text;
+
+  @apply text-accent no-underline transition-colors duration-fast;
+
+  @apply text-highlight;
+}
+
+@layer components {
+  @apply bg-accent text-primary px-5 py-2 rounded text-base transition-all duration-fast;
+
+  @apply bg-highlight shadow-md;
+
+  @apply p-2.5 border border-border rounded w-full text-base bg-secondary text-text mb-4 transition-colors duration-fast;
+
+  @apply outline-none border-accent;
+
+  @apply bg-secondary text-text p-5 rounded shadow-md my-5;
+
+  @apply bg-primary text-text px-5 py-2 flex justify-between items-center;
+
+  @apply text-text mx-2;
+
+  @apply bg-primary text-text text-center p-3;
+
+  @apply bg-accent text-text px-4 py-2 flex justify-between items-center;
+
+  @apply bg-secondary text-text px-5 py-6 max-w-screen-xl mx-auto;
+
+  @apply flex flex-row;
+
+  @apply grid grid-flow-col;
+
+  @apply text-center;
 }
 
 

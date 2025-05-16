@@ -8,3 +8,5 @@ const AdminDashboardPage = () => {
         </div>
     );
     }
+
+    export default AdminDashboardPage;
