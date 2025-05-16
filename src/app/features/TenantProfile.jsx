@@ -1,13 +1,11 @@
 'use client';
 
 import { useEffect, useState, useContext } from 'react';
-import  AuthContext  from '@/context/AuthContext';
-import {
-  getTenantProfile,
-  updateTenantProfile,
-} from '../services/apiService';
+import AuthContext from '@/context/AuthContext';
+import { getTenantProfile, updateTenantProfile } from '@/services/apiService';
+import { Input, Button, Card } from '@/components/ui';
 
-export default function TenantProfilePage() {
+export default function TenantProfile() {
   const { user } = useContext(AuthContext);
   const [profile, setProfile] = useState(null);
   const [formData, setFormData] = useState({});
@@ -34,22 +32,25 @@ export default function TenantProfilePage() {
     setIsEditing(false);
   };
 
-  if (!profile) return <div>Loading profile...</div>;
+  if (!profile) return <p>Loading profile...</p>;
 
   return (
-    <div className="max-w-xl mx-auto bg-white p-6 rounded shadow">
-      <h2 className="text-2xl font-bold mb-4">Tenant Profile</h2>
+    <Card className="space-y-4">
+      <h2 className="text-2xl font-bold">Tenant Profile</h2>
 
       {isEditing ? (
         <form onSubmit={handleSubmit} className="space-y-3">
-          <input name="phone" value={formData.phone || ''} onChange={handleChange} className="input" />
-          <input name="address" value={formData.address || ''} onChange={handleChange} className="input" />
-          <input type="date" name="leaseStart" value={formData.leaseStart || ''} onChange={handleChange} className="input" />
-          <input type="date" name="leaseEnd" value={formData.leaseEnd || ''} onChange={handleChange} className="input" />
-          <input type="number" name="rentAmount" value={formData.rentAmount || ''} onChange={handleChange} className="input" />
-          <div className="flex gap-2">
-            <button type="submit" className="btn btn-primary">Save</button>
-            <button onClick={() => setIsEditing(false)} type="button" className="btn btn-secondary">Cancel</button>
+          <Input name="phone" value={formData.phone || ''} onChange={handleChange} placeholder="Phone" />
+          <Input name="address" value={formData.address || ''} onChange={handleChange} placeholder="Address" />
+          <Input type="date" name="leaseStart" value={formData.leaseStart || ''} onChange={handleChange} />
+          <Input type="date" name="leaseEnd" value={formData.leaseEnd || ''} onChange={handleChange} />
+          <Input type="number" name="rentAmount" value={formData.rentAmount || ''} onChange={handleChange} placeholder="Rent Amount" />
+
+          <div className="flex gap-3">
+            <Button type="submit">Save</Button>
+            <Button type="button" variant="secondary" onClick={() => setIsEditing(false)}>
+              Cancel
+            </Button>
           </div>
         </form>
       ) : (
@@ -59,9 +60,13 @@ export default function TenantProfilePage() {
           <p><strong>Lease Start:</strong> {profile.leaseStart}</p>
           <p><strong>Lease End:</strong> {profile.leaseEnd}</p>
           <p><strong>Rent:</strong> ${profile.rentAmount}</p>
-          <button onClick={() => setIsEditing(true)} className="btn btn-primary mt-4">Edit</button>
+        
+
+          <Button variant="primary" className="mt-4" onClick={() => setIsEditing(true)}>
+            Edit
+          </Button>
         </div>
       )}
-    </div>
+    </Card>
   );
 }

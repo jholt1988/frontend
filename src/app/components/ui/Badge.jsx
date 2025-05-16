@@ -1,18 +1,18 @@
+'use client';
 
-import React from 'react';
-import { cn } from '../../utils/cn';
+export default function Badge({ children, variant = 'default', className = '' }) {
+  const base = 'px-2 py-1 text-xs font-semibold rounded';
+  const variants = {
+    default: 'bg-border text-text',
+    success: 'bg-green-600 text-white',
+    warning: 'bg-yellow-500 text-black',
+    danger: 'bg-red-600 text-white',
+    info: 'bg-blue-500 text-white',
+  };
 
-const colorMap = {
-  success: 'bg-green-100 text-green-700',
-  warning: 'bg-yellow-100 text-yellow-700',
-  error: 'bg-red-100 text-red-700',
-  info: 'bg-blue-100 text-blue-700',
-};
-
-const Badge = ({ label, variant = 'info', className }) => (
-  <span className={cn('text-xs font-medium px-2 py-1 rounded-full', colorMap[variant], className)}>
-    {label}
-  </span>
-);
-
-export default Badge;
+  return (
+    <span className={`${base} ${variants[variant]} ${className}`}>
+      {children}
+    </span>
+  );
+}

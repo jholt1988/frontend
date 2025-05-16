@@ -4,7 +4,8 @@ import Link from 'next/link';
 import { useContext } from 'react';
 import AuthContext ,{ AuthProvider}  from '@/context/AuthContext';
 import SidebarLayout from '@/components/SidebarLayout';
-import { ToastContainer } from 'react-toastify';
+import { ToastProvider } from './components/ui/Toast/ToastProvider';
+import { Modal } from './components/ui/Modal/Modal';
 import './globals.css';
 
 export default function RootLayout({ children }) {
@@ -12,7 +13,11 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <body>
         <AuthProvider>
-          <SidebarLayout>{children}</SidebarLayout>
+          <ToastProvider>
+            <Modal>
+            <SidebarLayout>{children}</SidebarLayout>
+            </Modal>
+          </ToastProvider>
         </AuthProvider> 
       </body>
     </html>

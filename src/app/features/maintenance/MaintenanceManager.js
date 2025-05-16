@@ -1,93 +1,116 @@
-// src/features/maintenance/MaintenanceManager.jsx
+'use client';
+
 import React, { useState } from 'react';
 import useMaintenance from './useMaintenance';
 import MaintenanceForm from './MaintenanceForm';
+import { Button, Badge, Card } from '@/components/ui';
+import { Modal, ModalTrigger, ModalContent } from '@/components/ui/modal';
+import ConfirmModal from '@/components/ui/modal/ConfirmModal';
+import { useToast } from '@/components/ui/toast/ToastProvider';
 
-const MaintenanceManager = () => {
-    const {
-        requests,
-        loading,
-        createRequest,
-        updateRequest,
-        deleteRequest
-    } = useMaintenance();
+export default function MaintenanceManager() {
+  const {
+    requests,
+    loading,
+    createRequest,
+    updateRequest,
+    deleteRequest,
+  } = useMaintenance();
 
-    const [editingRequest, setEditingRequest] = useState(null);
-    const [isFormOpen, setIsFormOpen] = useState(false);
-    
+  const [editingRequest, setEditingRequest] = useState(null);
+  const [isFormOpen, setIsFormOpen] = useState(false);
+  const { showToast } = useToast();
 
-    return (
-        <div className="p-6">
-            <div className="flex justify-between items-center mb-4">
-                <h2 className="text-2xl font-bold">Maintenance Requests</h2>
-                <button
+  const handleDelete = async (id) => {
+    await deleteRequest(id);
+    showToast('Request deleted', 'success');
+  };
+
+  const handleSubmit = async (data) => {
+    if (editingRequest) {
+      await updateRequest(editingRequest.id, data);
+      showToast('Request updated', 'success');
+    } else {
+      await createRequest(data);
+      showToast('Request created', 'success');
+    }
+    setIsFormOpen(false);
+  };
+
+  return (
+    <Card className="space-y-6">
+      <div className="flex justify-between items-center">
+        <h2 className="text-2xl font-bold">Maintenance Requests</h2>
+        <Button
+          onClick={() => {
+            setEditingRequest(null);
+            setIsFormOpen(true);
+          }}
+        >
+          New Request
+        </Button>
+      </div>
+
+      {loading ? (
+        <p>Loading requests...</p>
+      ) : (
+        <table className="min-w-full border">
+          <thead>
+            <tr className="bg-gray-100">
+              <th className="text-left p-2">Title</th>
+              <th className="text-left p-2">Property</th>
+              <th className="text-left p-2">Priority</th>
+              <th className="text-left p-2">Status</th>
+              <th className="text-left p-2">Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            {requests.map((req) => (
+              <tr key={req.id} className="border-t">
+                <td className="p-2">{req.title}</td>
+                <td className="p-2">{req.propertyName}</td>
+                <td className="p-2">{req.priority}</td>
+                <td className="p-2">
+                  <Badge variant="info">{req.status}</Badge>
+                </td>
+                <td className="p-2 space-x-2">
+                  <Button
+                    variant="secondary"
                     onClick={() => {
-                        setEditingRequest(null);
-                        setIsFormOpen(true);
+                      setEditingRequest(req);
+                      setIsFormOpen(true);
                     }}
-                    className="px-4 py-2 bg-blue-600 text-white rounded"
-                >
-                    New Request
-                </button>
-            </div>
+                  >
+                    Edit
+                  </Button>
 
-            {loading ? (
-                <p>Loading requests...</p>
-            ) : (
-                <table className="min-w-full bg-white border">
-                    <thead>
-                        <tr className="bg-gray-100">
-                            <th className="text-left p-2">Title</th>
-                            <th className="text-left p-2">Property</th>
-                            <th className="text-left p-2">Priority</th>
-                            <th className="text-left p-2">Status</th>
-                            <th className="text-left p-2">Actions</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {requests.map((req) => (
-                            <tr key={req.id} className="border-t">
-                                <td className="p-2">{req.title}</td>
-                                <td className="p-2">{req.propertyName}</td>
-                                <td className="p-2">{req.priority}</td>
-                                <td className="p-2">{req.status}</td>
-                                <td className="p-2 space-x-2">
-                                    <button
-                                        onClick={() => {
-                                            setEditingRequest(req);
-                                            setIsFormOpen(true);
-                                        }}
-                                        className="px-3 py-1 bg-yellow-400 text-white rounded"
-                                    >Edit</button>
-                                    <button
-                                        onClick={() => deleteRequest(req.id)}
-                                        className="px-3 py-1 bg-red-600 text-white rounded"
-                                    >Delete</button>
-                                </td>
-                            </tr>
-                        ))}
-                    </tbody>
-                </table>
-            )}
+                  <ModalTrigger
+                    render={() => (
+                      <ConfirmModal
+                        title="Delete Request?"
+                        message="This cannot be undone."
+                        onConfirm={() => handleDelete(req.id)}
+                      />
+                    )}
+                  >
+                    <Button variant="danger">Delete</Button>
+                  </ModalTrigger>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      )}
 
-            {isFormOpen && (
-                <MaintenanceForm
-                    initialData={editingRequest}
-                    onClose={() => setIsFormOpen(false)}
-                    onSubmit={async (data) => {
-                        if (editingRequest) {
-                            await updateRequest(editingRequest.id, data);
-                        } else {
-                            await createRequest(data);
-                        }
-                        setIsFormOpen(false);
-                    }}
-                />
-            )}
-        </div>
-    );
-};
+      {isFormOpen && (
+        <MaintenanceForm
+          initialData={editingRequest}
+          onClose={() => setIsFormOpen(false)}
+          onSubmit={handleSubmit}
+        />
+      )}
 
-export default MaintenanceManager;
-
-
+      <ModalContent />
+    </Card>
+  );
+}

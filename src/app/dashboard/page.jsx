@@ -1,13 +1,25 @@
-import AdminDashboard from "../features/AdminDashboard";
+'use client';
 
+import AdminDashboard from '../features/AdminDashboard';
+import { Card } from '@/components/ui';
+import { useToast } from '@/components/ui/toast/ToastProvider';
 
-const AdminDashboardPage = () => {
-    return (
-        <div className="max-w-3xl mx-auto p-4 bg-white rounded shadow">
-        <h1 className="text-3xl font-bold mb-4">Admin Dashboard</h1>
-        <AdminDashboard />
-        </div>
-    );
+export default function AdminDashboardPage() {
+  const { showToast } = useToast();
+
+  return (
+    <Card className="max-w-6xl mx-auto mt-6 space-y-6">
+      <div className="flex items-center justify-between">
+        <h1 className="text-3xl font-bold">Admin Dashboard</h1>
+        <button
+          onClick={() => showToast('Dashboard refreshed', 'success')}
+          className="text-sm text-accent underline"
+        >
+          Refresh
+        </button>
+      </div>
+
+      <AdminDashboard />
+    </Card>
+  );
 }
-
-export default AdminDashboardPage;

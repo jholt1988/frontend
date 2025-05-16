@@ -1,57 +1,70 @@
+'use client';
 
-import React from 'react'; 
-import ResponsiveListTable from '../../components/ResponsiveListTable';
-import usePagination from '../../features/pagination/usePagination';
-import PaginationControls from '../../features/pagination/PaginationControls';
-import useTenants from  './useTenants';
+import React from 'react';
+import useTenants from './useTenants';
+import usePagination from '@/features/pagination/usePagination';
+import PaginationControls from '@/features/pagination/PaginationControls';
+import ResponsiveListTable from '@/components/ResponsiveListTable';
+import { Card, Button } from '@/components/ui';
+import { Modal, ModalTrigger, ModalContent } from '@/components/ui/modal';
+import ConfirmModal from '@/components/ui/modal/ConfirmModal';
+import { useToast } from '@/components/ui/toast/ToastProvider';
 
-const TenantManager = () => {
-  const {loading, 
-    tenants, 
-    createTenant, 
-    updateTenant,
-    deleteTenant} = useTenants();
-  
+export default function TenantManager() {
   const {
-    paginatedData: paginatedTenants,
+    tenants,
+    loading,
+    createTenant,
+    updateTenant,
+    deleteTenant,
+  } = useTenants();
+
+  const {
+    paginatedData,
     currentPage,
     maxPage,
     nextPage,
     prevPage,
-    goToPage
+    goToPage,
   } = usePagination(tenants, 10);
 
+  const { showToast } = useToast();
+
+  const handleDelete = async (id) => {
+    await deleteTenant(id);
+    showToast('Tenant deleted', 'success');
+  };
+
   return (
-    <div className="p-6">
-      <h2 className="text-2xl font-bold mb-4">Tenants</h2>
+    <Card className="space-y-6">
+      <h2 className="text-2xl font-bold">Tenants</h2>
 
       <ResponsiveListTable
         columns={['Name', 'Email', 'Phone', 'Actions']}
-        data={paginatedTenants}
+        data={paginatedData}
         keyField="id"
-        renderRow={(tenant, mode) =>
-          mode === 'table' ? (
-            <>
-              <td>{tenant.name}</td>
-              <td>{tenant.email}</td>
-              <td>{tenant.phone}</td>
-              <td>
-                <button onClick={() => updateTenant(tenant)}>Edit</button>
-                <button onClick={() => deleteTenant(tenant.id)}>Delete</button>
-              </td>
-            </>
-          ) : (
-            <>
-              <div><strong>Name:</strong> {tenant.name}</div>
-              <div><strong>Email:</strong> {tenant.email}</div>
-              <div><strong>Phone:</strong> {tenant.phone}</div>
-              <div>
-                <button onClick={() => updateTenant(tenant)}>Edit</button>
-                <button onClick={() => deleteTenant(tenant.id)}>Delete</button>
-              </div>
-            </>
-          )
-        }
+        renderRow={(tenant) => (
+          <tr key={tenant.id}>
+            <td>{tenant.name}</td>
+            <td>{tenant.email}</td>
+            <td>{tenant.phone}</td>
+            <td className="space-x-2">
+              <Button variant="secondary" onClick={() => updateTenant(tenant)}>Edit</Button>
+
+              <ModalTrigger
+                render={() => (
+                  <ConfirmModal
+                    title="Delete Tenant?"
+                    message={`Are you sure you want to delete ${tenant.name}?`}
+                    onConfirm={() => handleDelete(tenant.id)}
+                  />
+                )}
+              >
+                <Button variant="danger">Delete</Button>
+              </ModalTrigger>
+            </td>
+          </tr>
+        )}
       />
 
       <PaginationControls
@@ -61,8 +74,8 @@ const TenantManager = () => {
         onPrev={prevPage}
         onGoTo={goToPage}
       />
-    </div>
-  );
-};
 
-export default TenantManager;
+      <ModalContent />
+    </Card>
+  );
+}
