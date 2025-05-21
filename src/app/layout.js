@@ -5,31 +5,15 @@ import { useContext } from 'react';
 import AuthContext ,{ AuthProvider}  from '@/context/AuthContext';
 import SidebarLayout from '@/components/SidebarLayout';
 import { ToastProvider } from './components/ui/Toast/ToastProvider';
-import { Modal } from './components/ui/Modal/Modal';
+import {Modal} from './components/ui/Modal/Modal';
 import './globals.css';
-
-export default function RootLayout({ children }) {
-  return (
-    <html lang="en">
-      <body>
-        <AuthProvider>
-          <ToastProvider>
-            <Modal>
-            <SidebarLayout>{children}</SidebarLayout>
-            </Modal>
-          </ToastProvider>
-        </AuthProvider> 
-      </body>
-    </html>
-  );
-}
 
 function Layout({ children }) {
   const { user, logout } = useContext(AuthContext);
 
   return (
     <div className="min-h-screen bg-primary text-text flex flex-col">
-      <ToastContainer />
+ 
       {/* Header */}
       <header className="header">
         <div className="flex items-center justify-between w-full max-w-7xl mx-auto">
@@ -56,6 +40,7 @@ function Layout({ children }) {
       <main className='layout-container'>
         
           {children}
+      
 
       </main>
 
@@ -66,3 +51,25 @@ function Layout({ children }) {
     </div>
   );
 }
+
+export default function RootLayout({ children }) {
+  return (
+    <html lang="en">
+      <body>
+        <AuthProvider>
+          <ToastProvider>
+            
+              <SidebarLayout>
+              
+                <Layout>{children}</Layout>
+              
+              </SidebarLayout>
+            
+          </ToastProvider>
+        </AuthProvider> 
+      </body>
+    </html>
+  );
+}
+
+  

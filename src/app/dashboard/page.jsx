@@ -1,6 +1,6 @@
 'use client';
 
-import AdminDashboard from '../features/AdminDashboard';
+import AdminDashboard from '@/features/AdminDashboard';
 import { Card } from '@/components/ui';
 import { useToast } from '@/components/ui/toast/ToastProvider';
 

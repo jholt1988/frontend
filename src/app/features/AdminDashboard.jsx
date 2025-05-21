@@ -4,6 +4,7 @@ import { useEffect, useState, useContext, useRef} from 'react';
 import  AuthContext  from '@/context/AuthContext';
 import { getDashboardSummary } from '@/services/apiService';
 import { getDashboardStats } from '@/services/apiService';
+import LineChart from '@/components/ui/charts/LineChart'
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, BarChart, Bar } from 'recharts';
 import ExportControls from '@/components/ExportControls';
 
@@ -72,7 +73,20 @@ export default function AdminDashboard() {
       </ResponsiveContainer>
     </div>
   </div>
-)}
+  )}
+
+
+<LineChart
+  data={stats.monthlyPayments}
+  xKey="month"
+  yKey="total"
+  label="Monthly Revenue"
+/>
+<RecentActivityTable type="payments" />
+<RecentActivityTable type="tenants" />
+<RecentActivityTable type="requests" />
+
+
         <div className="mt-6">
             <h3 className="text-lg font-semibold mb-2">Export Data</h3>
             <ExportControls />
@@ -80,6 +94,7 @@ export default function AdminDashboard() {
     </div>
   );
 }
+
 
 function StatCard({ label, value }) {
   return (

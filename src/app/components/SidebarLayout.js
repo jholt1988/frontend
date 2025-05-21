@@ -5,11 +5,14 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import AuthContext from '../context/AuthContext';
 import ThemeToggle from './ThemeToggle';
+import { User } from 'lucide-react';
+
 
 export default function SidebarLayout({ children }) {
   const { user, logout } = useContext(AuthContext);
   const [open, setOpen] = useState(true);
   const pathname = usePathname();
+  const avatar = user?.avatarUrl || '/default-avatar.png';
 
   const NavItem = ({ href, label }) => (
     <Link
@@ -21,7 +24,7 @@ export default function SidebarLayout({ children }) {
       {label}
     </Link>
   );
-
+ const Timer = ({ proper }) => {
   return (
     <div className="sidebar">
       {/* Sidebar */}
@@ -64,6 +67,26 @@ export default function SidebarLayout({ children }) {
             {open ? 'Hide Menu' : 'Show Menu'}
           </button>
         </header>
+        {/* User avatar + info */}
+        <div className="mt-6 flex items-center gap-3">
+          {avatar ? (
+            <Image
+              new
+               src={avatar}
+              alt="User Avatar"
+              width={40}
+              height={40}
+              className="rounded-full object-cover"
+            />
+          ) : (
+            <User className="w-8 h-8 text-gray-300" />
+          )}
+          <div>
+            <p className="text-sm font-medium">{user?.name || 'User'}</p>
+            <p className="text-xs text-gray-400">{user?.email}</p>
+          </div>
+        </div>
+
 
         {/* Page Content */}
         <main>{children}</main>
@@ -77,5 +100,6 @@ export default function SidebarLayout({ children }) {
         </footer>
       </div>
     </div>
-  );
+  );  
+}
 }
