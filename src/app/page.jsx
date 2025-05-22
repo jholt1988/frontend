@@ -6,17 +6,11 @@ import AuthContext from '@/context/AuthContext'
 import Link from 'next/link';
 import "globals.css";
 export default function LandingPage() {
-  const { user, loading } = useContext(AuthContext);
-  const router = useRouter();
+  
 
-  useEffect(() => {
-    if (!loading && user) {
-      if (user.role === 'tenant') router.push('/tenant-profile');
-      else router.push('/dashboard');
-    }
-  }, [user, loading]);
+  
 
-  if (loading) return <p className="p-6">Checking session...</p>;
+
 
   return (
     <div className="layout-container">

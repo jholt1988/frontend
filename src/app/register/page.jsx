@@ -5,7 +5,8 @@ import AuthContext from '@/context/AuthContext';
 import { registerUser } from '@/services/authService';
 import { toast } from 'react-toastify';
 import Link from 'next/link';
-export default function RegisterPage() {
+import withGuest from '../lib/withGuest';
+ function RegisterPage() {
   const { login } = useContext(AuthContext);
   const [formData, setFormData] = useState({
     name: '',
@@ -74,3 +75,5 @@ export default function RegisterPage() {
             </div>
         );
     };
+
+export default withGuest(RegisterPage);

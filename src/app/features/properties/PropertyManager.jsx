@@ -1,88 +1,97 @@
-import React, { useState} from 'react';
-import ResponsiveListTable from '../../components/ResponsiveListTable';
-import useProperties from '../../features/properties/useProperties';
-import usePagination from '../pagination/usePagination';
-import PaginationControls from '../pagination/PaginationControls';
+'use client';
+
+import { useState, useEffect } from 'react';
+import axiosInstance from '@/services/axiosInstance';
+import { Card, Button, Badge } from '@/components/ui';
+import { Modal, ModalTrigger, ModalContent } from '@/components/ui/modal';
+import ConfirmModal from '@/components/ui/modal/ConfirmModal';
 import PropertyForm from './PropertyForm';
-const PropertyManager = () => {
-  const {
-    loading,
-    properties,
-    createProperties,
-    updateProperties,
-    deleteProperties,
-  } = useProperties();
+import { useToast } from '@/components/ui/toast/ToastProvider';
 
-  const {
-    paginatedData: paginatedProperties,
-    currentPage,
-    maxPage,
-    nextPage,
-    prevPage,
-    goToPage
-  } = usePagination(properties, 10);
+export default function PropertyManager() {
+  const [properties, setProperties] = useState([]);
+  const [editing, setEditing] = useState(null);
+  const [isOpen, setIsOpen] = useState(false);
+  const { showToast } = useToast();
 
-  
+  const fetchProps = async () => {
+    const res = await axiosInstance.get('/properties');
+    setProperties(res.data);
+  };
 
-  const [editingRequest, setEditingRequest] = useState(null);
-  const [isFormOpen, setIsFormOpen] = useState(false);
+  useEffect(() => {
+    fetchProps();
+  }, []);
+
+  const handleDelete = async (id) => {
+    await axiosInstance.delete(`/properties/${id}`);
+    showToast('Property deleted', 'success');
+    fetchProps();
+  };
+
+  const handleSave = async (data) => {
+    if (editing) {
+      await axiosInstance.put(`/properties/${editing.id}`, data);
+      showToast('Property updated');
+    } else {
+      await axiosInstance.post('/properties', data);
+      showToast('Property created');
+    }
+
+    setIsOpen(false);
+    setEditing(null);
+    fetchProps();
+  };
 
   return (
-    <div className="p-6">
-      <h2 className="text-2xl font-bold mb-4">Properties</h2>
-      <ResponsiveListTable
-        columns={['Name', 'Address', 'Type', 'Units', 'Actions']}
-        data={paginatedProperties}
-        keyField="id"
-        renderRow={(property, mode) =>
-          mode === 'table' ? (
-            <>
-              <td>{property.name}</td>
-              <td>{property.address}</td>
-              <td>{property.type}</td>
-              <td>{property.unitCount}</td>
-              <td>
-                <button onClick={() => {setEditingRequest(property); setIsFormOpen(true);}}>Edit</button>
-                <button onClick={() => deleteProperties(property.id)}>Delete</button>
+    <Card className="space-y-4">
+      <div className="flex justify-end">
+        <Button onClick={() => { setEditing(null); setIsOpen(true); }}>
+          Add Property
+        </Button>
+      </div>
+
+      <table className="w-full border">
+        <thead>
+          <tr className="bg-secondary text-left">
+            <th className="p-2">Name</th>
+            <th className="p-2">Units</th>
+            <th className="p-2">Manager</th>
+            <th className="p-2">Status</th>
+            <th className="p-2">Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          {properties.map((p) => (
+            <tr key={p.id} className="border-t">
+              <td className="p-2">{p.name}</td>
+              <td className="p-2">{p.unitCount}</td>
+              <td className="p-2">{p.manager}</td>
+              <td className="p-2"><Badge>{p.status}</Badge></td>
+              <td className="p-2 space-x-2">
+                <Button variant="secondary" onClick={() => { setEditing(p); setIsOpen(true); }}>Edit</Button>
+                <ModalTrigger
+                  render={() => (
+                    <ConfirmModal title="Delete Property?" onConfirm={() => handleDelete(p.id)} />
+                  )}
+                >
+                  <Button variant="danger">Delete</Button>
+                </ModalTrigger>
               </td>
-            </>
-          ) : (
-            <>
-              <div><strong>Name:</strong> {property.name}</div>
-              <div><strong>Address:</strong> {property.address}</div>
-              <div><strong>Type:</strong> {property.type}</div>
-              <div><strong>Units:</strong> {property.unitCount}</div>
-                <div>
-                <button onClick={() => {setEditingRequest(null); setIsFormOpen(true);}}>Add</button>
-                  <button onClick={() => { setEditingRequest(property); setIsFormOpen(true)}}>Edit</button>
-                <button onClick={() => deleteProperties(property.id)}>Delete</button>
-              </div>
-            </>
-          )
-        }
-      />
-      {isFormOpen && (<PropertyManager
-        initialData={editingRequest}
-        onClose={() => setIsFormOpen(false)}
-        onSubmit={async (data) => {
-          if (editingRequest) {
-            await updateProperties(editingRequest.id, data);
-          } else {
-            await createProperties(data);
-          }
-          setIsFormOpen(false);
-        }}
-      />)}
-      <PaginationControls
-        currentPage={currentPage}
-        maxPage={maxPage}
-        onNext={nextPage}
-        onPrev={prevPage}
-        onGoTo={goToPage}
-      />
-    </div>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+
+      {isOpen && (
+        <PropertyForm
+          initialData={editing}
+          onClose={() => setIsOpen(false)}
+          onSubmit={handleSave}
+        />
+      )}
+
+      <ModalContent />
+    </Card>
   );
 }
-
-
-export default PropertyManager;

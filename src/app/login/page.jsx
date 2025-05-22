@@ -5,8 +5,9 @@ import AuthContext from '@/context/AuthContext';
 import { loginUser } from '@/services/authService';
 import { toast } from 'react-toastify';
 import Link from 'next/link';
+import withGuest from '../lib/withGuest';
 
-export default function LoginPage() {
+ function LoginPage() {
   const { login } = useContext(AuthContext);
   const [formData, setFormData] = useState({ email: '', password: '' });
   const [error, setError] = useState('');
@@ -71,3 +72,4 @@ export default function LoginPage() {
         );
 }
     
+export default withGuest(LoginPage);
