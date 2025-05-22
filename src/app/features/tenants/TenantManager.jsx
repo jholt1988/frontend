@@ -40,7 +40,7 @@ export default function TenantManager() {
       <h2 className="text-2xl font-bold">Tenants</h2>
 
       <ResponsiveListTable
-        columns={['Name', 'Email', 'Phone', 'Actions']}
+        columns={['Name', 'Email', 'Phone', 'Actions', 'Property']}
         data={paginatedData}
         keyField="id"
         renderRow={(tenant) => (
@@ -48,6 +48,9 @@ export default function TenantManager() {
             <td>{tenant.name}</td>
             <td>{tenant.email}</td>
             <td>{tenant.phone}</td>
+            
+<td className="p-2">{tenant.property?.name || 'Unassigned'}</td>
+
             <td className="space-x-2">
               <Button variant="secondary" onClick={() => updateTenant(tenant)}>Edit</Button>
 

@@ -1,8 +1,4 @@
 /* [project]/src/app/styles/theme.css [app-client] (css) */
-@config {
-  theme { fontFamily: { sans: ["Roboto", "sans-serif"], }, colors: { primary: "#121212", secondary: "#1E1E1E", accent: "#BB86FC", highlight: "#03DAC5", text: "#E0E0E0", border: "#444", }, borderRadius: { DEFAULT: "4px", }, transitionDuration: { fast: "300ms", }, }
-}
-
 @layer base {
   * {
     box-sizing: border-box;
@@ -47,7 +43,7 @@
   @apply text-center;
 }
 
-tml.theme-dark {
+html.theme-dark {
   --primary: #121212;
   --secondary: #1e1e1e;
   --text: #e0e0e0;

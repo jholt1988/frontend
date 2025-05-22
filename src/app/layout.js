@@ -12,9 +12,10 @@ import './globals.css';
         <AuthProvider>
           <ToastProvider>
             <SidebarLayout>
-            
+             <div className="layout-container">
                 {children}
              
+             </div>
             </SidebarLayout>
           </ToastProvider>
         </AuthProvider>

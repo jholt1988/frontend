@@ -6,6 +6,7 @@ import { usePathname } from 'next/navigation';
 import AuthContext from '../context/AuthContext';
 import ThemeToggle from './ThemeToggle';
 import { User } from 'lucide-react';
+import Image from 'next/image';
 
 
 export default function SidebarLayout({ children }) {
@@ -24,7 +25,7 @@ export default function SidebarLayout({ children }) {
       {label}
     </Link>
   );
- const Timer = ({ proper }) => {
+ 
   return (
     <div className="sidebar">
       {/* Sidebar */}
@@ -71,7 +72,7 @@ export default function SidebarLayout({ children }) {
         <div className="mt-6 flex items-center gap-3">
           {avatar ? (
             <Image
-              new
+            
                src={avatar}
               alt="User Avatar"
               width={40}
@@ -102,4 +103,4 @@ export default function SidebarLayout({ children }) {
     </div>
   );  
 }
-}
+

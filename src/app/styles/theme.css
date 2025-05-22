@@ -1,27 +1,7 @@
 /* src/styles/theme.css */
 
 
-@config {
-  theme {
-    fontFamily: {
-      sans: ['Roboto', 'sans-serif'],
-    },
-    colors: {
-      primary: '#121212',
-      secondary: '#1E1E1E',
-      accent: '#BB86FC',
-      highlight: '#03DAC5',
-      text: '#E0E0E0',
-      border: '#444',
-    },
-    borderRadius: {
-      DEFAULT: '4px',
-    },
-    transitionDuration: {
-      fast: '300ms',
-    },
-  }
-}
+/* Define theme configuration in a compatible way, such as using Tailwind CSS configuration or a plugin */
 
 @layer base {
   * {
@@ -101,7 +81,7 @@
   }
   /* In globals.css or theme.css */
 }
-tml.theme-dark {
+html.theme-dark {
   --primary: #121212;
   --secondary: #1E1E1E;
   --text: #E0E0E0;
